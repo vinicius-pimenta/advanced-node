@@ -2,7 +2,7 @@ import { HttpResponse, unauthorized, ok } from '@/application/helpers'
 import { Controller } from '@/application/controllers'
 import { ValidationBuilder as Builder, Validator } from '@/application/validation'
 import { FacebookAuthentication } from '@/domain/features'
-import { AccessToken } from '@/domain/models'
+import { AccessToken } from '@/domain/entities'
 
 type HttpRequest = {
   token: string
