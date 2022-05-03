@@ -84,7 +84,7 @@ describe('FacebookAuthentication', () => {
   it('should return an AccessToken on success', async () => {
     const authResult = await sut({ token })
 
-    expect(authResult).toEqual({ accessToken: 'any_generated_token' })
+    expect(authResult).toEqual({ accessToken: 'any_generated_token', email: 'any_fb_email', name: 'any_fb_name' })
   })
 
   it('should rethrow if LoadFacebookUser throws', async () => {

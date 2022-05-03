@@ -4,7 +4,7 @@ import { ValidationBuilder as Builder, Validator } from '@/application/validatio
 import { FacebookAuthentication } from '@/domain/use-cases'
 
 type HttpRequest = { token: string }
-type Model = Error | { accessToken: string }
+type Model = Error | { accessToken: string, email: string, name: string }
 
 export class FacebookLoginController extends Controller {
   constructor (private readonly facebookAuthentication: FacebookAuthentication) {

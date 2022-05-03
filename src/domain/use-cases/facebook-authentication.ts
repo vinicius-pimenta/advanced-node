@@ -9,7 +9,7 @@ type Setup = (
   token: TokenGenerator
 ) => FacebookAuthentication
 type Input = { token: string }
-type Output = { accessToken: string }
+type Output = { accessToken: string, email: string, name: string }
 export type FacebookAuthentication = (params: Input) => Promise<Output>
 
 export const setupFacebookAuthentication: Setup = (facebook, userAccountRepo, token) => async params => {
@@ -19,7 +19,7 @@ export const setupFacebookAuthentication: Setup = (facebook, userAccountRepo, to
     const fbAccount = new FacebookAccount(fbData, accountData)
     const { id } = await userAccountRepo.saveWithFacebook(fbAccount)
     const accessToken = await token.generate({ key: id, expirationInMs: AccessToken.expirationInMs })
-    return { accessToken }
+    return { accessToken, email: fbData.email, name: fbData.name }
   }
   throw new AuthenticationError()
 }
